@@ -29,12 +29,3 @@ class Account:
     def __add_transaction(self, amount):
         transaction = Transaction(amount)
         self.transactions.append(transaction)
-        print(self.__format_transaction(transaction))
-
-    def __format_transaction(self, transaction):
-        date = transaction.get_date()
-        amount = transaction.get_amount()
-        balance = self.get_balance()
-        if amount > 0:
-            return f'{date} || {amount} || || {balance}'
-  
