@@ -3,5 +3,8 @@ class Account:
         self.balance = 0
         
     def get_balance(self):
-        return 0
+        return self.balance
     
+    def deposit(self, amount):
+        self.balance += amount
+  
