@@ -1,4 +1,7 @@
 class Account:
     def __init__(self):
-        return None
+        self.balance = 0
+        
+    def get_balance(self):
+        return 0
     
