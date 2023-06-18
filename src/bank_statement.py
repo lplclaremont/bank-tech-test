@@ -3,7 +3,11 @@ from .account import Account
 class BankStatement:
     def __init__(self, account):
         self.account = account
+        self.statement = "date || credit || debit || balance"
     
+    def view(self):
+        return self.statement
+
     def __format_transaction(self, transaction):
         arr = self.__get_transaction_details_array(transaction)
         return " || ".join(arr)
