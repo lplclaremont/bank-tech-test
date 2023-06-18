@@ -1,7 +1,5 @@
 import unittest
 from unittest.mock import patch
-from freezegun import freeze_time
-from datetime import date
 from src.account import Account
 
 class TestAccount(unittest.TestCase):
