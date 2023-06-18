@@ -6,6 +6,7 @@ from src.account import Account
 class TestAccount(unittest.TestCase):
     """Testing the get_balance method of an account is initialised
     at 0 and updates when depositing and withdrawing"""
+
     def test_initial_balance_zero(self):
         account = Account()
         self.assertEqual(account.get_balance(), 0)
@@ -30,8 +31,28 @@ class TestAccount(unittest.TestCase):
         account = Account()
         with self.assertRaises(Exception):
             account.withdraw(-10)
+
+    """Testing the transactions array is populated
+    when a deposit or withdrawal is made"""
+
+    def test_initial_transactions_empty(self):
+        account = Account()
+        transactions = account.transactions
+        self.assertEqual(transactions, [])
         
-        
+    def test_transactions_after_deposit(self):
+        account = Account()
+        account.deposit(1000)
+        transactions = account.transactions
+        self.assertEqual(len(transactions), 1)
+        self.assertEqual(transactions[0].get_amount(), 1000)
+    
+    def test_transactions_after_withdrawal(self):
+        account = Account()
+        account.withdraw(1000)
+        transactions = account.transactions
+        self.assertEqual(len(transactions), 1)
+        self.assertEqual(transactions[0].get_amount(), -1000)
 
 if __name__ == '__main__':
     unittest.main()
