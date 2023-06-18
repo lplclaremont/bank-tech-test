@@ -3,7 +3,7 @@ from .transaction import Transaction
 class Account:
     def __init__(self):
         self.balance = 0
-        self.transactions = []
+        self.transactions_and_balance = []
         
     def get_balance(self):
         return self.balance
@@ -29,4 +29,5 @@ class Account:
         
     def __add_transaction(self, amount):
         transaction = Transaction(amount)
-        self.transactions.append(transaction)
+        pair = [transaction, self.get_balance]
+        self.transactions_and_balance.append(pair)

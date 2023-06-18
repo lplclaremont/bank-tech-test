@@ -36,7 +36,7 @@ class TestAccount(unittest.TestCase):
 
     def test_initial_transactions_empty(self):
         account = Account()
-        transactions = account.transactions
+        transactions = account.transactions_and_balance
         self.assertEqual(transactions, [])
         
     @patch('src.transaction.Transaction.get_amount')
@@ -45,10 +45,10 @@ class TestAccount(unittest.TestCase):
 
         account = Account()
         account.deposit(1000)
-        transactions = account.transactions
+        transactions = account.transactions_and_balance
 
         self.assertEqual(len(transactions), 1)
-        self.assertEqual(transactions[0].get_amount(), 1000)
+        self.assertEqual(transactions[0][0].get_amount(), 1000)
     
     @patch('src.transaction.Transaction.get_amount')
     def test_transactions_after_withdrawal(self, mock_get_amount):
@@ -56,10 +56,10 @@ class TestAccount(unittest.TestCase):
 
         account = Account()
         account.withdraw(1000)
-        transactions = account.transactions
+        transactions = account.transactions_and_balance
 
         self.assertEqual(len(transactions), 1)
-        self.assertEqual(transactions[0].get_amount(), -1000)
+        self.assertEqual(transactions[0][0].get_amount(), -1000)
 
 if __name__ == '__main__':
     unittest.main()
