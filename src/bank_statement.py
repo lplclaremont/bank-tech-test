@@ -1,6 +1,6 @@
-from account import Account
+from .account import Account
 
-class StatementView:
+class BankStatement:
     def __init__(self, account):
         self.account = account
     
