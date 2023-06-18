@@ -1,4 +1,7 @@
-from .transaction import Transaction
+try:
+    from .transaction import Transaction
+except ImportError:
+    from transaction import Transaction
 
 class Account:
     def __init__(self):
@@ -10,13 +13,13 @@ class Account:
     
     def deposit(self, amount):
         self.__check_transaction_input(amount)
-        self.__add_transaction(amount)
         self.balance += amount
+        self.__add_transaction(amount)
 
     def withdraw(self, amount):
         self.__check_transaction_input(amount)
-        self.__add_transaction(-amount)
         self.balance -= amount
+        self.__add_transaction(-amount)
 
     def get_statement(self):
         return self.statement
@@ -29,5 +32,5 @@ class Account:
         
     def __add_transaction(self, amount):
         transaction = Transaction(amount)
-        pair = [transaction, self.get_balance]
+        pair = [transaction, self.balance]
         self.transactions_and_balance.append(pair)

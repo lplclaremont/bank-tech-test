@@ -42,7 +42,7 @@ class TestBankStatement(unittest.TestCase):
         mock_transaction_2.get_amount.return_value = -500
 
         mock_account = Mock(spec=Account)
-        mock_account.get_balance.return_value = 500
+        #mock_account.get_balance.return_value = 500
         mock_account.transactions_and_balance = [[mock_transaction_1, 1000], [mock_transaction_2, 500]]
 
         statement = BankStatement(mock_account)

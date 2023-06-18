@@ -2,6 +2,7 @@ import unittest
 from unittest.mock import patch
 from src.account import Account
 
+
 class TestAccount(unittest.TestCase):
     """Testing the get_balance method of an account is initialised
     at 0 and updates when depositing and withdrawing"""
