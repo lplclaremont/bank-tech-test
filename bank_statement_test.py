@@ -32,7 +32,7 @@ class TestBankStatement(unittest.TestCase):
 
     """Testing the view method after deposit and a withdrawal"""
     
-    def test_after_one_deposit(self):
+    def test_after_two_transactions(self):
         mock_transaction_1 = Mock(spec=Transaction)
         mock_transaction_1.get_date.return_value = "23/10/10"
         mock_transaction_1.get_amount.return_value = 1000
