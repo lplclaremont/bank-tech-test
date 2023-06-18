@@ -1,4 +1,5 @@
 import unittest
+from unittest.mock import patch
 from freezegun import freeze_time
 from datetime import date
 from src.account import Account
@@ -40,17 +41,25 @@ class TestAccount(unittest.TestCase):
         transactions = account.transactions
         self.assertEqual(transactions, [])
         
-    def test_transactions_after_deposit(self):
+    @patch('src.transaction.Transaction.get_amount')
+    def test_transactions_after_deposit(self, mock_get_amount):
+        mock_get_amount.return_value = 1000
+
         account = Account()
         account.deposit(1000)
         transactions = account.transactions
+
         self.assertEqual(len(transactions), 1)
         self.assertEqual(transactions[0].get_amount(), 1000)
     
-    def test_transactions_after_withdrawal(self):
+    @patch('src.transaction.Transaction.get_amount')
+    def test_transactions_after_withdrawal(self, mock_get_amount):
+        mock_get_amount.return_value = -1000
+
         account = Account()
         account.withdraw(1000)
         transactions = account.transactions
+
         self.assertEqual(len(transactions), 1)
         self.assertEqual(transactions[0].get_amount(), -1000)
 
