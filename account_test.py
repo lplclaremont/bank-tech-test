@@ -61,5 +61,12 @@ class TestAccount(unittest.TestCase):
         self.assertEqual(len(transactions), 1)
         self.assertEqual(transactions[0].get_amount(), -1000)
 
+    """Testing the get_statement method returns correct string"""
+
+    def test_statement_initial_columns(self):
+        account = Account()
+        expected_str = "date || credit || debit || balance"
+        self.assertEqual(account.get_statement(), expected_str)
+
 if __name__ == '__main__':
     unittest.main()
