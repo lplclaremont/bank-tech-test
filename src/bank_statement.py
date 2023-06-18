@@ -6,7 +6,8 @@ class BankStatement:
         self.header = "date || credit || debit || balance\n"
     
     def view(self):
-        transactions = self.account.transactions
+        transactions = self.account.transactions_and_balance
+        transactions.reverse()
         transaction_strings = map(self.__format_transaction, transactions)
 
         return self.header + "\n".join(transaction_strings)   
@@ -15,13 +16,13 @@ class BankStatement:
         arr = self.__get_transaction_details_array(transaction)
         return " || ".join(arr)
     
-    def __get_transaction_details_array(self, transaction):
-        date = transaction.get_date()
-        amount = transaction.get_amount()
-        balance = self.account.get_balance()
+    def __get_transaction_details_array(self, transaction_pair):
+        date = transaction_pair[0].get_date()
+        amount = transaction_pair[0].get_amount()
+        current_balance = transaction_pair[1]
         if amount > 0:
-            return [date, str(amount), "", str(balance)]
+            return [date, str(amount), "", str(current_balance)]
         else:
-            return [date, "", str(-amount), str(balance)]
+            return [date, "", str(-amount), str(current_balance)]
         
     
