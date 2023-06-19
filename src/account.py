@@ -6,7 +6,7 @@ except ImportError:
 class Account:
     def __init__(self):
         self.balance = 0
-        self.transactions_and_balance = []
+        self.activity_log = []
         
     def get_balance(self):
         return self.balance
@@ -32,5 +32,8 @@ class Account:
         
     def __add_transaction(self, amount):
         transaction = Transaction(amount)
-        pair = [transaction, self.balance]
-        self.transactions_and_balance.append(pair)
+        activity = {
+            "transaction": transaction,
+            "balance": self.balance
+            }
+        self.activity_log.append(activity)

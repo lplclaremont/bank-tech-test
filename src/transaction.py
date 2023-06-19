@@ -1,7 +1,7 @@
 from datetime import date
 class Transaction:
     def __init__(self, amount):
-        self.__check_input(amount)
+        self.check_input(amount)
         self.set_date()
         self.amount = amount
 
@@ -9,7 +9,7 @@ class Transaction:
         today = date.today()
         self.date = today.strftime("%y/%m/%d")
     
-    def __check_input(self, amount):
+    def check_input(self, amount):
         if (type(amount) != int) or (amount == 0):
             raise Exception("Input must be a non zero integer")
         

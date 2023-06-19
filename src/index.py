@@ -1,6 +1,13 @@
 from transaction import Transaction
+from account import Account
+from bank_statement import BankStatement
 
-trans = Transaction(100)
+account = Account()
+account.deposit(1000)
+account.deposit(30)
+account.withdraw(530)
+account.withdraw(400)
 
-print(f'DATE: {trans.date}')
-print(f'AMOUNT: {trans.amount}')
+statement = BankStatement(account)
+
+print(statement.view())

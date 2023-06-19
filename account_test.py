@@ -38,8 +38,8 @@ class TestAccount(unittest.TestCase):
 
     def test_initial_transactions_empty(self):
         account = Account()
-        transactions = account.transactions_and_balance
-        self.assertEqual(transactions, [])
+        log = account.activity_log
+        self.assertEqual(log, [])
 
     ## We will mock the result of `transaction.amount` in the following
     ## two tests to ensure we are only testing Account class
@@ -60,10 +60,11 @@ class TestAccount(unittest.TestCase):
             mock_transaction.return_value.amount = -1000
             account = Account()
             account.withdraw(1000)
-            transactions = account.transactions_and_balance
+            log = account.activity_log
+            transaction = log[0]["transaction"]
 
-            self.assertEqual(len(transactions), 1)
-            self.assertEqual(transactions[0][0].amount, -1000)
+            self.assertEqual(len(log), 1)
+            self.assertEqual(transaction.amount, -1000)
 
 if __name__ == '__main__':
     unittest.main()
