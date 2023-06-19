@@ -11,8 +11,8 @@ class Account:
         self.balance = 0
         self.activity_log = []
         
-    def get_balance(self):
-        return self.balance
+    # def get_balance(self):
+    #     return self.balance
     
     def deposit(self, amount):
         self.__check_transaction_input(amount)

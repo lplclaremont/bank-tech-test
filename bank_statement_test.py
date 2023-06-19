@@ -29,7 +29,7 @@ class TestBankStatement(unittest.TestCase):
             ]
 
         statement = BankStatement(mock_account)
-        expected_str = "date || credit || debit || balance\n23/10/10 || 1000 || || 1000"
+        expected_str = "date || credit || debit || balance\n23/10/10 || 1000.00 || || 1000.00"
         self.assertEqual(statement.view(), expected_str)
 
     """Testing the view method after deposit and a withdrawal"""
@@ -51,8 +51,8 @@ class TestBankStatement(unittest.TestCase):
         statement = BankStatement(mock_account)
         expected_str = "\n".join([
             "date || credit || debit || balance",
-            "23/10/12 || || 500 || 500",
-            "23/10/10 || 1000 || || 1000"
+            "23/10/12 || || 500.00 || 500.00",
+            "23/10/10 || 1000.00 || || 1000.00"
         ])
         
         self.assertEqual(statement.view(), expected_str)
