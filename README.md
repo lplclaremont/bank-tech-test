@@ -48,9 +48,11 @@ cd bank-tech-test
 cd src
 ```
 
-Open REPL and use the following commands:
+Open REPL inside the src folder and import the relevant classes:
 
 ```
+cd bank-tech-test
+cd src
 python3
 >>> from account import Account
 >>> from bank_statement import BankStatement
@@ -80,10 +82,9 @@ Here is an example output:
 
 
 ## Running the tests
-The tests utilise Python's standard unittest library:
+The tests utilise Python's standard unittest library.
+Run the following command inside the bank-tech-test directory:
 ```
-cd bank-tech-test
-cd tests
 python3 -m unittest discover -s tests -p '*_test.py'
 ```
 
