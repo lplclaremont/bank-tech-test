@@ -52,27 +52,29 @@ Open REPL and use the following commands:
 
 ```
 python3
-from account import Account
-from bank_statement import BankStatement
-account = Account()
+>>> from account import Account
+>>> from bank_statement import BankStatement
+>>> account = Account()
 ```
 
 Now you are able to make deposits and withdrawals as follows:
 
 ```
-account.deposit(1000)
-account.deposit(500)
-account.withdraw(250)
+>>> account.deposit(1000)
+>>> account.deposit(500)
+>>> account.withdraw(250)
 ```
 
 And view your statement:
 
 ```
-statement = BankStatement(account)
-print(statement.view())
+>>> statement = BankStatement(account)
+>>> print(statement.view())
 ```
 Here is an example output:
+<br>
 ![a screenshot of the user display](./public/example-user-usage.png)
+<br>
 
 
 ## Running the tests
@@ -89,4 +91,6 @@ python3 python3 integration_test.py
 ```
 
 Here is the test coverage report:
+<br>
 ![a screenshot of the test coverage](./public/test-coverage.png)
+<br>
