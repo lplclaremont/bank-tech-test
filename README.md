@@ -45,13 +45,12 @@ With python3 installed, clone this repository and cd into the source code by run
 ```
 git clone https://github.com/lplclaremont/bank-tech-test
 cd bank-tech-test
-cd src
+pip3 install -r requirements.txt
 ```
 
 Open REPL inside the src folder and import the relevant classes:
 
 ```
-cd bank-tech-test
 cd src
 python3
 >>> from account import Account
