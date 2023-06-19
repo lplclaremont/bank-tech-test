@@ -36,5 +36,20 @@ class TestIntegration(unittest.TestCase):
         ])
         self.assertEqual(statement.view(), expected_str)
 
+    @freeze_time("2023-10-10")
+    def test_statement_after_transactions_with_decimal_places(self):
+        account = Account()
+        account.deposit(1000.01)
+        account.deposit(500.05)
+        account.withdraw(2000.1)
+        statement = BankStatement(account)
+        expected_str = "\n".join([
+            "date || credit || debit || balance",
+            "23/10/10 || || 2000.10 || -500.04",
+            "23/10/10 || 500.05 || || 1500.06",
+            "23/10/10 || 1000.01 || || 1000.01"
+        ])
+        self.assertEqual(statement.view(), expected_str)
+
 if __name__ == '__main__':
     unittest.main()
