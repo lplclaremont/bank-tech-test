@@ -6,7 +6,7 @@ account = Account()
 account.deposit(1000)
 account.deposit(30)
 account.withdraw(530)
-account.withdraw(400)
+account.withdraw('hi')
 
 statement = BankStatement(account)
 

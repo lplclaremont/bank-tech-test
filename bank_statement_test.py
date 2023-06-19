@@ -10,7 +10,7 @@ class TestBankStatement(unittest.TestCase):
     
     def test_initial_blank_statement(self):
         mock_account = Mock(spec=Account)
-        mock_account.transactions_and_balance = []
+        mock_account.activity_log = []
 
         statement = BankStatement(mock_account)
         expected_str = "date || credit || debit || balance\n"
@@ -24,10 +24,12 @@ class TestBankStatement(unittest.TestCase):
         mock_transaction.amount = 1000
 
         mock_account = Mock(spec=Account)
-        mock_account.transactions_and_balance = [[mock_transaction, 1000]]
+        mock_account.activity_log = [
+            {"transaction": mock_transaction, "balance": 1000}
+            ]
 
         statement = BankStatement(mock_account)
-        expected_str = """date || credit || debit || balance\n23/10/10 || 1000 ||  || 1000"""
+        expected_str = "date || credit || debit || balance\n23/10/10 || 1000 || || 1000"
         self.assertEqual(statement.view(), expected_str)
 
     """Testing the view method after deposit and a withdrawal"""
@@ -42,13 +44,15 @@ class TestBankStatement(unittest.TestCase):
         mock_transaction_2.amount = -500
 
         mock_account = Mock(spec=Account)
-        mock_account.transactions_and_balance = [[mock_transaction_1, 1000], [mock_transaction_2, 500]]
+        mock_account.activity_log = [
+            {"transaction": mock_transaction_1, "balance": 1000},
+            {"transaction": mock_transaction_2, "balance": 500}]
 
         statement = BankStatement(mock_account)
         expected_str = "\n".join([
             "date || credit || debit || balance",
-            "23/10/12 ||  || 500 || 500",
-            "23/10/10 || 1000 ||  || 1000"
+            "23/10/12 || || 500 || 500",
+            "23/10/10 || 1000 || || 1000"
         ])
         
         self.assertEqual(statement.view(), expected_str)

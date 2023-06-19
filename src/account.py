@@ -1,3 +1,6 @@
+# I was unable to get the imports to work for both
+# the tests and the REPL. So this try catch was the
+# only solution which worked for me
 try:
     from .transaction import Transaction
 except ImportError:
@@ -20,12 +23,8 @@ class Account:
         self.__check_transaction_input(amount)
         self.balance -= amount
         self.__add_transaction(-amount)
-
-    def get_statement(self):
-        return self.statement
     
-
-    # Private
+    # private
     def __check_transaction_input(self, amount):
         if (amount <= 0) or type(amount) != int:
             raise Exception("Input must be a positive integer")
