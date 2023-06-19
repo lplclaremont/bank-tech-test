@@ -30,19 +30,44 @@ date || credit || debit || balance
 ## Approach
 I decided to implement this in Python since I wanted an extra challenge and to get some exposure to another language. I used the unittest library to test drive this project.
 Each class was designed sequentially:
-- Transaction
-
+**Transaction**
 This creates a transaction which contains the date and monetary total of the transaction.
-- Account
 
+**Account**
 This creates a blank account with an initial balance of 0 and an array which will be populated with logs of transaction, storing the transaction object and the current balance after that transaction is added.
-- BankStatement
 
+**BankStatement**
 This is initialised with an account object and will create a statement for the account up to that point.
 
 ## Running the code
-Clone this repository by running this command in your terminal:
+With python3 installed, clone this repository and cd into the source code by running this in your terminal:
 
 ```
 git clone https://github.com/lplclaremont/bank-tech-test
+cd bank-tech-test
+cd src
 ```
+
+Open REPL and use the following commands:
+
+'''
+python3
+from account import Account
+from bank_statement import BankStatement
+account = Account()
+'''
+
+Now you are able to make deposits and withdrawals as follows:
+
+'''
+account.deposit(1000)
+account.deposit(500)
+account.withdraw(250)
+'''
+
+And view your statement:
+
+'''
+statement = BankStatement(account)
+print(statement.view())
+'''
