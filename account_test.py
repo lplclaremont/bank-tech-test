@@ -1,5 +1,6 @@
 import unittest
 from unittest.mock import patch
+from src.transaction import Transaction
 from src.account import Account
 
 
@@ -39,28 +40,26 @@ class TestAccount(unittest.TestCase):
         account = Account()
         transactions = account.transactions_and_balance
         self.assertEqual(transactions, [])
+
+    def test_transactions_after_deposit(self):
+        with patch('src.account.Transaction', autospec=True) as mock_transaction:
+            mock_transaction.return_value.amount = 1000
+            account = Account()
+            account.deposit(1000)
+            transactions = account.transactions_and_balance
+
+            self.assertEqual(len(transactions), 1)
+            self.assertEqual(transactions[0][0].amount, 1000)
         
-    @patch('src.transaction.Transaction.get_amount')
-    def test_transactions_after_deposit(self, mock_get_amount):
-        mock_get_amount.return_value = 1000
+    def test_transactions_after_deposit(self):
+        with patch('src.account.Transaction', autospec=True) as mock_transaction:
+            mock_transaction.return_value.amount = -1000
+            account = Account()
+            account.withdraw(1000)
+            transactions = account.transactions_and_balance
 
-        account = Account()
-        account.deposit(1000)
-        transactions = account.transactions_and_balance
-
-        self.assertEqual(len(transactions), 1)
-        self.assertEqual(transactions[0][0].get_amount(), 1000)
-    
-    @patch('src.transaction.Transaction.get_amount')
-    def test_transactions_after_withdrawal(self, mock_get_amount):
-        mock_get_amount.return_value = -1000
-
-        account = Account()
-        account.withdraw(1000)
-        transactions = account.transactions_and_balance
-
-        self.assertEqual(len(transactions), 1)
-        self.assertEqual(transactions[0][0].get_amount(), -1000)
+            self.assertEqual(len(transactions), 1)
+            self.assertEqual(transactions[0][0].amount, -1000)
 
 if __name__ == '__main__':
     unittest.main()
