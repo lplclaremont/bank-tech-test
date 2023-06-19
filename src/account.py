@@ -26,7 +26,7 @@ class Account:
     
     # private
     def __check_transaction_input(self, amount):
-        if (amount <= 0) or type(amount) != int:
+        if (type(amount) != int) or (amount <= 0):
             raise Exception("Input must be a positive integer")
         
     def __add_transaction(self, amount):

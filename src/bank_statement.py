@@ -7,11 +7,11 @@ class BankStatement:
     
     def view(self):
         transactions = self.account.activity_log
-        transactions.reverse()
-        transaction_strings = map(self.__get_transaction_row, transactions)
-
+        transaction_strings = map(self.__get_transaction_row, transactions[::-1])
+        
         return self.header + "\n".join(transaction_strings)
     
+    # private
     def __get_transaction_row(self, activity):
         date = activity["transaction"].date
         amount = activity["transaction"].amount
