@@ -21,5 +21,20 @@ class TestIntegration(unittest.TestCase):
         expected_str = "date || credit || debit || balance\n23/10/10 || 1000.00 || || 1000.00"
         self.assertEqual(statement.view(), expected_str)
 
+    @freeze_time("2023-10-10")
+    def test_statement_after_multiple_transactions(self):
+        account = Account()
+        account.deposit(1000)
+        account.deposit(500)
+        account.withdraw(2000)
+        statement = BankStatement(account)
+        expected_str = "\n".join([
+            "date || credit || debit || balance",
+            "23/10/10 || || 2000.00 || -500.00",
+            "23/10/10 || 500.00 || || 1500.00",
+            "23/10/10 || 1000.00 || || 1000.00"
+        ])
+        self.assertEqual(statement.view(), expected_str)
+
 if __name__ == '__main__':
     unittest.main()

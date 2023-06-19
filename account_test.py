@@ -14,11 +14,6 @@ class TestAccount(unittest.TestCase):
         account = Account()
         account.deposit(1000)
         self.assertEqual(account.balance, 1000)
-    
-    def test_negative_deposit_input(self):
-        account = Account()
-        with self.assertRaises(Exception):
-            account.deposit(-10)
 
     def test_valid_withdraw_input(self):
         account = Account()
@@ -26,10 +21,30 @@ class TestAccount(unittest.TestCase):
         account.withdraw(100)
         self.assertEqual(account.balance, 900)
 
+    """Testing error raise when the deposit or withdrawal
+    amount is invalid"""
+
+    def test_negative_deposit_input(self):
+        account = Account()
+        with self.assertRaises(Exception):
+            account.deposit(-10)
+    
     def test_negative_withdraw_input(self):
         account = Account()
         with self.assertRaises(Exception):
             account.withdraw(-10)
+
+    def test_bad_type_deposit_input(self):
+        account = Account()
+        with self.assertRaises(Exception):
+            account.deposit('5')
+    
+    def test_bad_type_withdraw_input(self):
+        account = Account()
+        with self.assertRaises(Exception):
+            account.withdraw('5')
+
+    
 
     """Testing the transactions array is populated
     when a deposit or withdrawal is made"""
