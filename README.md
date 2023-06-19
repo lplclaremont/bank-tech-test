@@ -71,3 +71,5 @@ And view your statement:
 statement = BankStatement(account)
 print(statement.view())
 ```
+
+![a screenshot of the user display](./public/example-user-usage.png)
