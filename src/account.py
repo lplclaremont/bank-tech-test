@@ -10,9 +10,6 @@ class Account:
     def __init__(self):
         self.balance = 0
         self.activity_log = []
-        
-    # def get_balance(self):
-    #     return self.balance
     
     def deposit(self, amount):
         self.__check_transaction_input(amount)
@@ -26,8 +23,8 @@ class Account:
     
     # private
     def __check_transaction_input(self, amount):
-        if (type(amount) != int) or (amount <= 0):
-            raise Exception("Input must be a positive integer")
+        if amount <= 0:
+            raise Exception("Input must be positive")
         
     def __add_transaction(self, amount):
         transaction = Transaction(amount)

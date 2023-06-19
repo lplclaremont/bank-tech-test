@@ -34,16 +34,20 @@ class TestAccount(unittest.TestCase):
         with self.assertRaises(Exception):
             account.withdraw(-10)
 
-    def test_bad_type_deposit_input(self):
+    def test_too_many_dp_input(self):
+        account = Account()
+        with self.assertRaises(Exception):
+            account.deposit(200.01)
+
+    def test_invalid_deposit_input_type(self):
         account = Account()
         with self.assertRaises(Exception):
             account.deposit('5')
     
-    def test_bad_type_withdraw_input(self):
+    def test_invalid_withdraw_input_type(self):
         account = Account()
         with self.assertRaises(Exception):
             account.withdraw('5')
-
     
 
     """Testing the transactions array is populated

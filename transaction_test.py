@@ -14,6 +14,8 @@ class TestTransaction(unittest.TestCase):
         transaction = Transaction(-100)
         self.assertEqual(transaction.amount, -100)
 
+    "Testing error cases"
+
     def test_zero_amount_input(self):
         with self.assertRaises(Exception):
             transaction = Transaction(0)
@@ -24,7 +26,7 @@ class TestTransaction(unittest.TestCase):
             
     def test_invalid_input_type(self):
         with self.assertRaises(Exception):
-            transaction = Transaction('five')
+            transaction = Transaction(100.101)
     
     """Testing the .date attribute returns the correct date in the 
     correct format"""
