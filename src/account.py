@@ -14,19 +14,19 @@ class Account:
     def deposit(self, amount):
         self.__check_transaction_input(amount)
         self.balance += amount
-        self.__add_transaction(amount)
+        self.__log_transaction(amount)
 
     def withdraw(self, amount):
         self.__check_transaction_input(amount)
         self.balance -= amount
-        self.__add_transaction(-amount)
+        self.__log_transaction(-amount)
     
     # private
     def __check_transaction_input(self, amount):
         if amount <= 0:
             raise Exception("Input must be positive")
         
-    def __add_transaction(self, amount):
+    def __log_transaction(self, amount):
         transaction = Transaction(amount)
         activity = {
             "transaction": transaction,

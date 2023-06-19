@@ -6,10 +6,11 @@ class BankStatement:
         self.header = "date || credit || debit || balance\n"
     
     def view(self):
-        transactions = self.account.activity_log
-        transaction_strings = map(self.__get_transaction_row, transactions[::-1])
+        log = self.account.activity_log
+        log.reverse()
+        statement_rows = map(self.__get_transaction_row, log)
 
-        return self.header + "\n".join(transaction_strings)
+        return self.header + "\n".join(statement_rows)
     
     # private
     def __get_transaction_row(self, activity):
