@@ -81,13 +81,8 @@ Here is an example output:
 The tests utilise Python's standard unittest library:
 ```
 cd bank-tech-test
-```
-And run each test suite individually:
-```
-python3 python3 transaction_test.py
-python3 python3 account_test.py
-python3 python3 bank_statement_test.py
-python3 python3 integration_test.py
+cd tests
+python3 -m unittest discover -s tests -p '*_test.py'
 ```
 
 Here is the test coverage report:
