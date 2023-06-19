@@ -73,7 +73,9 @@ And view your statement:
 ```
 Here is an example output:
 <br>
+<br>
 ![a screenshot of the user display](./public/example-user-usage.png)
+<br>
 <br>
 
 
@@ -87,5 +89,7 @@ python3 -m unittest discover -s tests -p '*_test.py'
 
 Here is the test coverage report:
 <br>
+<br>
 ![a screenshot of the test coverage](./public/test-coverage.png)
+<br>
 <br>
