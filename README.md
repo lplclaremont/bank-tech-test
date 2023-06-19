@@ -50,24 +50,24 @@ cd src
 
 Open REPL and use the following commands:
 
-'''
+```
 python3
 from account import Account
 from bank_statement import BankStatement
 account = Account()
-'''
+```
 
 Now you are able to make deposits and withdrawals as follows:
 
-'''
+```
 account.deposit(1000)
 account.deposit(500)
 account.withdraw(250)
-'''
+```
 
 And view your statement:
 
-'''
+```
 statement = BankStatement(account)
 print(statement.view())
-'''
+```
