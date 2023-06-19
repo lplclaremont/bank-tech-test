@@ -37,7 +37,7 @@ class TestAccount(unittest.TestCase):
     def test_too_many_dp_input(self):
         account = Account()
         with self.assertRaises(Exception):
-            account.deposit(200.01)
+            account.deposit(200.0102)
 
     def test_invalid_deposit_input_type(self):
         account = Account()
