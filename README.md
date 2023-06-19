@@ -31,7 +31,7 @@ date || credit || debit || balance
 I decided to implement this in Python since I wanted an extra challenge and to get some exposure to another language. I used the unittest library to test drive this project.
 Each class was designed sequentially:
 **Transaction**
-This creates a transaction which contains the date and monetary total of the transaction.
+This creates transaction objects which contain the date it was made and the monetary value of the transaction.
 
 **Account**
 This creates a blank account with an initial balance of 0 and an array which will be populated with logs of transaction, storing the transaction object and the current balance after that transaction is added.
@@ -71,5 +71,22 @@ And view your statement:
 statement = BankStatement(account)
 print(statement.view())
 ```
-
+Here is an example output:
 ![a screenshot of the user display](./public/example-user-usage.png)
+
+
+## Running the tests
+The tests utilise Python's standard unittest library:
+```
+cd bank-tech-test
+```
+And run each test suite individually:
+```
+python3 python3 transaction_test.py
+python3 python3 account_test.py
+python3 python3 bank_statement_test.py
+python3 python3 integration_test.py
+```
+
+Here is the test coverage report:
+![a screenshot of the test coverage](./public/test-coverage.png)
