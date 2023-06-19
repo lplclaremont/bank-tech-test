@@ -20,8 +20,8 @@ class TestBankStatement(unittest.TestCase):
 
     def test_after_one_deposit(self):
         mock_transaction = Mock(spec=Transaction)
-        mock_transaction.get_date.return_value = "23/10/10"
-        mock_transaction.get_amount.return_value = 1000
+        mock_transaction.date = "23/10/10"
+        mock_transaction.amount = 1000
 
         mock_account = Mock(spec=Account)
         mock_account.transactions_and_balance = [[mock_transaction, 1000]]
@@ -34,15 +34,14 @@ class TestBankStatement(unittest.TestCase):
     
     def test_after_two_transactions(self):
         mock_transaction_1 = Mock(spec=Transaction)
-        mock_transaction_1.get_date.return_value = "23/10/10"
-        mock_transaction_1.get_amount.return_value = 1000
+        mock_transaction_1.date = "23/10/10"
+        mock_transaction_1.amount = 1000
 
         mock_transaction_2 = Mock(spec=Transaction)
-        mock_transaction_2.get_date.return_value = "23/10/12"
-        mock_transaction_2.get_amount.return_value = -500
+        mock_transaction_2.date = "23/10/12"
+        mock_transaction_2.amount = -500
 
         mock_account = Mock(spec=Account)
-        #mock_account.get_balance.return_value = 500
         mock_account.transactions_and_balance = [[mock_transaction_1, 1000], [mock_transaction_2, 500]]
 
         statement = BankStatement(mock_account)

@@ -17,8 +17,8 @@ class BankStatement:
         return " || ".join(arr)
     
     def __get_transaction_details_array(self, transaction_pair):
-        date = transaction_pair[0].get_date()
-        amount = transaction_pair[0].get_amount()
+        date = transaction_pair[0].date
+        amount = transaction_pair[0].amount
         current_balance = transaction_pair[1]
         if amount > 0:
             return [date, str(amount), "", str(current_balance)]
