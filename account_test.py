@@ -41,6 +41,10 @@ class TestAccount(unittest.TestCase):
         transactions = account.transactions_and_balance
         self.assertEqual(transactions, [])
 
+    ## We will mock the result of `transaction.amount` in the following
+    ## two tests to ensure we are only testing Account class
+    ## and not the behaviour of the Transaction class
+
     def test_transactions_after_deposit(self):
         with patch('src.account.Transaction', autospec=True) as mock_transaction:
             mock_transaction.return_value.amount = 1000
