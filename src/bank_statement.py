@@ -17,6 +17,9 @@ class BankStatement:
         date = activity["transaction"].date
         amount = activity["transaction"].amount
         balance = self.__float_to_two_dp(activity["balance"])
+        return self.__format_row(date, amount, balance)
+        
+    def __format_row(self, date, amount, balance):
         if amount > 0:
             amount_str = self.__float_to_two_dp(amount)
             return f'{date} || {amount_str} || || {str(balance)}'
@@ -26,3 +29,4 @@ class BankStatement:
         
     def __float_to_two_dp(self, float):
         return "{:.2f}".format(float)
+    
