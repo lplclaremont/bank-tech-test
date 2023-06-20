@@ -23,7 +23,7 @@ class TestBankStatement(unittest.TestCase):
 
     def test_after_one_deposit(self):
         mock_transaction = Mock(spec=Transaction)
-        mock_transaction.date = "23/10/10"
+        mock_transaction.date = "10/10/2023"
         mock_transaction.amount = 1000
 
         mock_account = Mock(spec=Account)
@@ -32,18 +32,18 @@ class TestBankStatement(unittest.TestCase):
             ]
 
         statement = BankStatement(mock_account)
-        expected_str = "date || credit || debit || balance\n23/10/10 || 1000.00 || || 1000.00"
+        expected_str = "date || credit || debit || balance\n10/10/2023 || 1000.00 || || 1000.00"
         self.assertEqual(statement.view(), expected_str)
 
     """Testing the view method after deposit and a withdrawal"""
     
     def test_after_two_transactions(self):
         mock_transaction_1 = Mock(spec=Transaction)
-        mock_transaction_1.date = "23/10/10"
+        mock_transaction_1.date = "10/10/2023"
         mock_transaction_1.amount = 1000
 
         mock_transaction_2 = Mock(spec=Transaction)
-        mock_transaction_2.date = "23/10/12"
+        mock_transaction_2.date = "10/12/2023"
         mock_transaction_2.amount = -500
 
         mock_account = Mock(spec=Account)
@@ -54,8 +54,8 @@ class TestBankStatement(unittest.TestCase):
         statement = BankStatement(mock_account)
         expected_str = "\n".join([
             "date || credit || debit || balance",
-            "23/10/12 || || 500.00 || 500.00",
-            "23/10/10 || 1000.00 || || 1000.00"
+            "10/12/2023 || || 500.00 || 500.00",
+            "10/10/2023 || 1000.00 || || 1000.00"
         ])
         
         self.assertEqual(statement.view(), expected_str)

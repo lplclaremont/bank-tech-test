@@ -21,7 +21,7 @@ class TestIntegration(unittest.TestCase):
         account = Account()
         account.deposit(1000)
         statement = BankStatement(account)
-        expected_str = "date || credit || debit || balance\n23/10/10 || 1000.00 || || 1000.00"
+        expected_str = "date || credit || debit || balance\n10/10/2023 || 1000.00 || || 1000.00"
         self.assertEqual(statement.view(), expected_str)
 
     @freeze_time("2023-10-10")
@@ -33,9 +33,9 @@ class TestIntegration(unittest.TestCase):
         statement = BankStatement(account)
         expected_str = "\n".join([
             "date || credit || debit || balance",
-            "23/10/10 || || 2000.00 || -500.00",
-            "23/10/10 || 500.00 || || 1500.00",
-            "23/10/10 || 1000.00 || || 1000.00"
+            "10/10/2023 || || 2000.00 || -500.00",
+            "10/10/2023 || 500.00 || || 1500.00",
+            "10/10/2023 || 1000.00 || || 1000.00"
         ])
         self.assertEqual(statement.view(), expected_str)
 
@@ -48,9 +48,9 @@ class TestIntegration(unittest.TestCase):
         statement = BankStatement(account)
         expected_str = "\n".join([
             "date || credit || debit || balance",
-            "23/10/10 || || 2000.10 || -500.04",
-            "23/10/10 || 500.05 || || 1500.06",
-            "23/10/10 || 1000.01 || || 1000.01"
+            "10/10/2023 || || 2000.10 || -500.04",
+            "10/10/2023 || 500.05 || || 1500.06",
+            "10/10/2023 || 1000.01 || || 1000.01"
         ])
         self.assertEqual(statement.view(), expected_str)
 

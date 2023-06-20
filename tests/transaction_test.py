@@ -37,7 +37,7 @@ class TestTransaction(unittest.TestCase):
     @freeze_time("2023-06-25")
     def test_date_format(self):
         transaction = Transaction(100)
-        self.assertEqual(transaction.date, '23/06/25')
+        self.assertEqual(transaction.date, '25/06/2023')
 
 if __name__ == '__main__':
     unittest.main()

@@ -7,7 +7,7 @@ class Transaction:
 
     def set_date(self):
         today = date.today()
-        self.date = today.strftime("%y/%m/%d")
+        self.date = today.strftime("%d/%m/%Y")
     
     # private
 
