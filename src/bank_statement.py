@@ -9,8 +9,9 @@ class BankStatement:
         log = self.account.activity_log
         log.reverse()
         statement_rows = map(self.__get_transaction_row, log)
-
-        return self.header + "\n".join(statement_rows)
+        bank_statement = self.header + "\n".join(statement_rows)
+        
+        return bank_statement
     
     # private
     def __get_transaction_row(self, activity):
