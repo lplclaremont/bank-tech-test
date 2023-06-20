@@ -1,25 +1,7 @@
 # Bank Mock Tech Test
 
 # Overview
-This is a first draft of the bank test during Makers Academy. It's specification is as follows:
-
-## Specification
-
-### Requirements
-
-* You should be able to interact with your code via a REPL like IRB or Node.  (You don't need to implement a command line interface that takes input from STDIN.)
-* Deposits, withdrawal.
-* Account statement (date, amount, balance) printing.
-* Data can be kept in memory (it doesn't need to be stored to a database or anything).
-
-### Acceptance criteria
-
-**Given** a client makes a deposit of 1000 on 10-01-2023  
-**And** a deposit of 2000 on 13-01-2023  
-**And** a withdrawal of 500 on 14-01-2023  
-**When** she prints her bank statement  
-**Then** she would see
-
+This is my completed 'bank' tech test for Makers Academy. It is a simple program which allows users to deposit and withdraw from a bank account and then view a statement based on these transactions in the following format
 ```
 date || credit || debit || balance
 14/01/2023 || || 500.00 || 2500.00
@@ -39,8 +21,15 @@ This creates a blank account with an initial balance of 0 and an array which wil
 **BankStatement**
 This is initialised with an account object and will create a statement for the account up to that point.
 
-## Running the code
-With python3 installed, clone this repository and cd into the source code by running this in your terminal:
+Here is an initial design diagram which demonstrates the structure described above:
+<br>
+<br>
+![a screenshot of class diagram](./public/example-user-usage.png)
+<br>
+<br>
+
+## Running the program
+With python3 installed, clone this repository and install the dependencies:
 
 ```
 git clone https://github.com/lplclaremont/bank-tech-test
@@ -48,7 +37,7 @@ cd bank-tech-test
 pip3 install -r requirements.txt
 ```
 
-Open REPL inside the src folder and import the relevant classes:
+Open the REPL inside the src folder and import the relevant classes:
 
 ```
 cd src
@@ -58,7 +47,7 @@ python3
 >>> account = Account()
 ```
 
-Now you are able to make deposits and withdrawals as follows:
+Now you are able to make deposits and withdrawals like so:
 
 ```
 >>> account.deposit(1000)
@@ -75,7 +64,7 @@ And view your statement:
 Here is an example output:
 <br>
 <br>
-![a screenshot of the user display](./public/example-user-usage.png)
+![a screenshot of the user display](./public/class-diagram.png)
 <br>
 <br>
 

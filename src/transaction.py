@@ -11,9 +11,9 @@ class Transaction:
     
     # private
 
-    # checks whether amount is zero, then whether it is 
-    # a float with more than 2 decimal places, then whether
-    # it is neither integer or a float
+    # checks for invalid input: whether amount is zero, whether it is 
+    # a float with more than 2 decimal places and finally
+    # whether it is neither an integer or a float
     def __check_input(self, amount):
         if (amount == 0):
             raise Exception("Input must be a non zero integer")
