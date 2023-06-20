@@ -6,6 +6,11 @@ from unittest.mock import patch
 from src.account import Account
 
 class TestAccount(unittest.TestCase):
+    def setUp(self):
+        # Add your setup code here
+        # This will be executed before each test method
+        print("Before each test")
+
     """Testing the .balance attribute of an account is initialised
     at 0 and updates when depositing and withdrawing"""
 
