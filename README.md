@@ -24,7 +24,7 @@ This is initialised with an account object and will create a statement for the a
 Here is an initial design diagram which demonstrates the structure described above:
 <br>
 <br>
-![a screenshot of class diagram](./public/example-user-usage.png)
+![a screenshot of class diagram](./public/class-diagram.png )
 <br>
 <br>
 
@@ -64,7 +64,7 @@ And view your statement:
 Here is an example output:
 <br>
 <br>
-![a screenshot of the user display](./public/class-diagram.png)
+![a screenshot of the user display](./public/example-user-usage.png)
 <br>
 <br>
 
