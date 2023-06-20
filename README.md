@@ -1,6 +1,6 @@
 # Bank Mock Tech Test
 
-# Overview
+## Overview
 This is my completed 'bank' tech test for Makers Academy. It is a simple program which allows users to deposit and withdraw from a bank account and then view a statement based on these transactions in the following format
 ```
 date || credit || debit || balance
