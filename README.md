@@ -1,7 +1,7 @@
 # Bank Mock Tech Test
 
 ## Overview
-This is my completed 'bank' tech test for Makers Academy. It is a simple program which allows users to deposit and withdraw from a bank account and then view a statement based on these transactions in the following format
+This is my completed 'bank' tech test for Makers Academy. It is a simple program which allows users to deposit and withdraw from a bank account in their command line and then view a statement based on these transactions in the following format
 ```
 date || credit || debit || balance
 14/01/2023 || || 500.00 || 2500.00
@@ -12,14 +12,15 @@ date || credit || debit || balance
 ## Approach
 I decided to implement this in Python since I wanted an extra challenge and to get some exposure to another language. I used the unittest library to test drive this project.
 Each class was designed sequentially:
+
 **Transaction**
-This creates transaction objects which contain the date it was made and the monetary value of the transaction.
+which creates transaction objects which contain the date it was made and the monetary value of the transaction.
 
 **Account**
-This creates a blank account with an initial balance of 0 and an array which will be populated with logs of transaction, storing the transaction object and the current balance after that transaction is added.
+which creates a blank account with an initial balance of 0 and an array which will be populated with logs of transaction, storing the transaction object and the current balance after that transaction is added.
 
 **BankStatement**
-This is initialised with an account object and will create a statement for the account up to that point.
+which is initialised with an account object and will create a statement for the account up to that point.
 
 Here is an initial design diagram which demonstrates the structure described above:
 <br>
@@ -44,12 +45,12 @@ cd src
 python3
 >>> from account import Account
 >>> from bank_statement import BankStatement
->>> account = Account()
 ```
 
 Now you are able to make deposits and withdrawals like so:
 
 ```
+>>> account = Account()
 >>> account.deposit(1000)
 >>> account.deposit(500)
 >>> account.withdraw(250)
