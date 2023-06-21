@@ -54,5 +54,25 @@ class TestIntegration(unittest.TestCase):
         ])
         self.assertEqual(statement.view(), expected_str)
 
+    def test_statement_with_multiple_transaction_dates(self):
+        account = Account()
+        with freeze_time("2023-10-12"):
+            account.deposit(1000)
+
+        with freeze_time("2023-10-13"):
+            account.deposit(500)
+
+        with freeze_time("2023-10-14"):
+            account.withdraw(2000)
+
+        expected_str = "\n".join([
+            "date || credit || debit || balance",
+            "14/10/2023 || || 2000.00 || -500.00",
+            "13/10/2023 || 500.00 || || 1500.00",
+            "12/10/2023 || 1000.00 || || 1000.00"
+        ])
+        statement = BankStatement(account)
+        self.assertEqual(statement.view(), expected_str)
+
 if __name__ == '__main__':
     unittest.main()
