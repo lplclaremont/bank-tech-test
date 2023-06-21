@@ -13,12 +13,10 @@ class Account:
     
     def deposit(self, amount):
         self.__check_transaction_input(amount)
-        # self.balance += amount
         self.__log_transaction(amount)
 
     def withdraw(self, amount):
         self.__check_transaction_input(amount)
-        # self.balance -= amount
         self.__log_transaction(-amount)
     
     # private
@@ -29,6 +27,7 @@ class Account:
     def __log_transaction(self, amount):
         transaction = Transaction(amount)
 
+        # This will set the running balance after a transaction
         if len(self.activity_log) == 0:
             balance = amount
         else:
