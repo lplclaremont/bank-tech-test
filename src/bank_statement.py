@@ -7,8 +7,7 @@ class BankStatement:
     
     def view(self):
         log = self.account.activity_log
-        log.reverse()
-        statement_rows = map(self.__get_transaction_row, log)
+        statement_rows = map(self.__get_transaction_row, reversed(log))
         bank_statement = self.header + "\n".join(statement_rows)
         
         return bank_statement

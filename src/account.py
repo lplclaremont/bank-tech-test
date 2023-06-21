@@ -8,17 +8,17 @@ except ImportError:
 
 class Account:
     def __init__(self):
-        self.balance = 0
+        # self.balance = 0
         self.activity_log = []
     
     def deposit(self, amount):
         self.__check_transaction_input(amount)
-        self.balance += amount
+        # self.balance += amount
         self.__log_transaction(amount)
 
     def withdraw(self, amount):
         self.__check_transaction_input(amount)
-        self.balance -= amount
+        # self.balance -= amount
         self.__log_transaction(-amount)
     
     # private
@@ -28,8 +28,14 @@ class Account:
         
     def __log_transaction(self, amount):
         transaction = Transaction(amount)
+
+        if len(self.activity_log) == 0:
+            balance = amount
+        else:
+            balance = self.activity_log[-1]["balance"] + amount
+    
         activity = {
             "transaction": transaction,
-            "balance": self.balance
+            "balance": balance
             }
         self.activity_log.append(activity)

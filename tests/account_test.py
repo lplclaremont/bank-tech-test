@@ -6,24 +6,6 @@ from unittest.mock import patch
 from src.account import Account
 
 class TestAccount(unittest.TestCase):
-    """Testing the .balance attribute of an account is initialised
-    at 0 and updates when depositing and withdrawing"""
-
-    def test_initial_balance_zero(self):
-        account = Account()
-        self.assertEqual(account.balance, 0)
-
-    def test_valid_deposit_input(self):
-        account = Account()
-        account.deposit(1000)
-        self.assertEqual(account.balance, 1000)
-
-    def test_valid_withdraw_input(self):
-        account = Account()
-        account.deposit(1000)
-        account.withdraw(100)
-        self.assertEqual(account.balance, 900)
-
     """Testing error raise when the deposit or withdrawal
     amount is invalid"""
 
@@ -70,7 +52,7 @@ class TestAccount(unittest.TestCase):
             mock_transaction.return_value.amount = 1000
             account = Account()
             account.deposit(1000)
-            transactions = account.transactions_and_balance
+            transactions = account.activity_log
 
             self.assertEqual(len(transactions), 1)
             self.assertEqual(transactions[0][0].amount, 1000)
