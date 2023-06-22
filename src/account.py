@@ -8,7 +8,6 @@ except ImportError:
 
 class Account:
     def __init__(self):
-        # self.balance = 0
         self.activity_log = []
     
     def deposit(self, amount):
